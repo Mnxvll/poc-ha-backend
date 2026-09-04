@@ -2,7 +2,7 @@
 
 Este repositorio contiene la implementacion del sistema RECAUDO-T, aplicando tacticas de disponibilidad como Ping/Echo y Redundancia Activa.
 
-## Ejecucion del proyecto
+## Ejecucion
 
 Para ejecutar el sistema completo con un solo comando, es necesario utilizar un entorno virtual de Python.
 
