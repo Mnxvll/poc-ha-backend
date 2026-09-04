@@ -1,7 +1,10 @@
 import os
+import logging
 from flask import Flask, jsonify
 
 app = Flask(__name__)
+# Silenciar los logs por defecto de Flask para que no sature la consola
+logging.getLogger('werkzeug').setLevel(logging.ERROR)
 
 # Recuperar configuración desde variables de entorno
 REPLICA_ID = os.environ.get('REPLICA_ID', 'DESCONOCIDO')
