@@ -14,7 +14,7 @@ def start_process(name, script, env_vars):
 
 
 if __name__ == '__main__':
-    print(" Iniciando el Ecosistema RECAUDO-T...")
+    print(" Iniciando...")
     
     procesos = []
     

@@ -6,7 +6,7 @@ Este diagrama detalla la interacción del sistema y la relación de alta disponi
 graph LR
     Cliente[Cliente]
 
-    subgraph Sistema RECAUDO-T
+    subgraph Sistema de Alta Disponibilidad
         Dispatcher["Dispatcher<br/>(Flask + Hilos)"]
         
         subgraph Clúster de Réplicas

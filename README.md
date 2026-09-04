@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 # RECAUDO-T - Arquitectura de Alta Disponibilidad
+=======
+# Arquitectura de Alta Disponibilidad
+>>>>>>> 25b5ca2 (refactor: rename project from HA to High Availability Architecture in documentation and logs)
 
-Este repositorio contiene la implementacion del sistema RECAUDO-T, aplicando tacticas de disponibilidad como Ping/Echo y Redundancia Activa.
+Este repositorio contiene la implementacion de un sistema de alta disponibilidad, aplicando tacticas como Ping/Echo y Redundancia Activa.
 
 ## Ejecucion
 
