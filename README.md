@@ -1,4 +1,4 @@
-# Proyecto RECAUDO-T - Arquitectura de Alta Disponibilidad
+# RECAUDO-T - Arquitectura de Alta Disponibilidad
 
 Este repositorio contiene la implementacion del sistema RECAUDO-T, aplicando tacticas de disponibilidad como Ping/Echo y Redundancia Activa.
 
