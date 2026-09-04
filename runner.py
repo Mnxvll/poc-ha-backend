@@ -8,9 +8,10 @@ def start_process(name, script, env_vars):
     env = os.environ.copy()
     env.update(env_vars)
     
-    print(f"➡️ Levantando {name}...")
-    # sys.executable asegura que usemos EXACTAMENTE el mismo Python de tu entorno virtual
+    print(f" levantando {name}...")
+    # Asegura que se use el mismo python del entorno virtual
     return subprocess.Popen([sys.executable, script], env=env)
+
 
 if __name__ == '__main__':
     print(" Iniciando el Ecosistema RECAUDO-T...")

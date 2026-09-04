@@ -23,7 +23,7 @@ def obtener_saldo(idTarjeta):
 @app.route('/chaos/crash', methods=['POST'])
 def crash():
     # Simula una falla de hardware terminando abruptamente el proceso.
-    print(f"¡La Réplica {REPLICA_ID} se está cayendo ahora!")
+    print(f"La Réplica {REPLICA_ID} se está cayendo ahora!")
     os._exit(0)
 
 if __name__ == '__main__':

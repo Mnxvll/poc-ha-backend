@@ -2,11 +2,14 @@ import os
 import time
 import threading
 import requests
+import logging
 import concurrent.futures
 from flask import Flask, jsonify
 from datetime import datetime
 
 app = Flask(__name__)
+# Silenciar los logs por defecto de Flask para que no sature la consola
+logging.getLogger('werkzeug').setLevel(logging.ERROR)
 
 # --- Configuración ---
 # Ejemplo: http://localhost:5001,http://localhost:5002,http://localhost:5003
@@ -26,7 +29,7 @@ estado_replicas = {}
 for url in REPLICAS:
     estado_replicas[url] = {"estado": "VIVA", "fallos": 0, "exitos": 0}
 
-# Candado (Lock) para hilos y evitar condiciones de carrera (race conditions)
+# Candado (Lock) para hilos y evitar condiciones de carrera 
 candado_estado = threading.Lock()
 
 def obtener_marca_de_tiempo():
@@ -73,7 +76,7 @@ hilo_monitor = threading.Thread(target=bucle_monitor, daemon=True)
 hilo_monitor.start()
 
 
-# --- Puntos de Enlace (Endpoints) ---
+# --- Endpoints ---
 
 @app.route('/estado', methods=['GET'])
 def obtener_estado():
@@ -97,7 +100,7 @@ def obtener_saldo(idTarjeta):
     if not replicas_vivas:
         return jsonify({"error": "No hay replicas VIVA disponibles"}), 503
 
-    # Usamos ThreadPoolExecutor para enviar peticiones en paralelo
+    # Se usa  ThreadPoolExecutor para enviar peticiones en paralelo
     with concurrent.futures.ThreadPoolExecutor(max_workers=len(replicas_vivas)) as ejecutor:
         # Enviar todas las tareas
         futuro_por_url = {ejecutor.submit(consultar_saldo_en_replica, url, idTarjeta): url for url in replicas_vivas}
