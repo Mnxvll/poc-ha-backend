@@ -3,39 +3,31 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-# Retrieve configuration from environment variables
-REPLICA_ID = os.environ.get('REPLICA_ID', 'UNKNOWN')
+# Recuperar configuración desde variables de entorno
+REPLICA_ID = os.environ.get('REPLICA_ID', 'DESCONOCIDO')
 PORT = int(os.environ.get('PORT', 5000))
 
 @app.route('/ping', methods=['GET'])
 def ping():
-    
-    # Returns the replica ID in the shortest time possible.
+    # Retorna el ID de la réplica en el menor tiempo posible.
     return jsonify({"replica_id": REPLICA_ID}), 200
 
-
-@app.route('/balance/<card_id>', methods=['GET'])
-def get_balance(card_id):
-        
-     #Returns a balance and the replica ID that served the request.
+@app.route('/saldo/<idTarjeta>', methods=['GET'])
+def obtener_saldo(idTarjeta):
+    # Retorna un saldo estático y el ID de la réplica que atendió la petición.
     return jsonify({
         "replica_id": REPLICA_ID,
-        "balance": 15000
+        "saldo": 15000
     }), 200
-
 
 @app.route('/chaos/crash', methods=['POST'])
 def crash():
-    
-    # Simulates a hardware failure by abruptly terminating the process.
-    print(f"Replica {REPLICA_ID} is crashing down now!")
+    # Simula una falla de hardware terminando abruptamente el proceso.
+    print(f"¡La Réplica {REPLICA_ID} se está cayendo ahora!")
     os._exit(0)
 
-
-
 if __name__ == '__main__':
-    # Run the Flask application
-    # host='0.0.0.0' allows connections from other containers/machines if needed
-
-    print(f"Starting Replica {REPLICA_ID} on port {PORT}...")
+    # Ejecuta la aplicación Flask
+    # host='0.0.0.0' permite conexiones desde otros contenedores o máquinas
+    print(f"Iniciando Réplica {REPLICA_ID} en el puerto {PORT}...")
     app.run(host='0.0.0.0', port=PORT)
