@@ -1,7 +1,6 @@
+# PoC - Arquitectura de Alta Disponibilidad
 
-# Arquitectura de Alta Disponibilidad
-
-Este repositorio contiene la implementacion de un sistema de alta disponibilidad, aplicando tacticas como Ping/Echo y Redundancia Activa.
+Este repositorio contiene la implementacion de un sistema de alta disponibilidad, aplicando tacticas como Ping/Echo y Redundancia Activa. Este proyecto esta desarrollado como una **Prueba de Concepto**, su objetivo es validar exclusivamente la efectividad teorica de estas tacticas de arquitectura en un entorno controlado, utilizando datos simulados para demostrar la tolerancia a fallos en tiempo real.
 
 ## Ejecucion
 
