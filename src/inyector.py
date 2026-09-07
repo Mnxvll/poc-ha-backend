@@ -20,7 +20,7 @@ def listar_replicas(pids):
     print("-" * 50)
     for nombre, info in pids.items():
         # Saltar el dispatcher si está en el archivo
-        if info.get("script") == "dispatcher.py":
+        if os.path.basename(info.get("script", "")) == "dispatcher.py":
             continue
         print(f"   [{nombre}]  PID {info['pid']}  →  Puerto {info['port']}")
     print("-" * 50)

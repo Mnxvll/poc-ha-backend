@@ -91,16 +91,16 @@ if __name__ == '__main__':
 
     try:
         # 1. Levantar Réplicas (mínimo 3, en procesos separados)
-        procesos.append(start_process("A", "replica.py", {"PORT": "5001", "REPLICA_ID": "A"}))
-        procesos.append(start_process("B", "replica.py", {"PORT": "5002", "REPLICA_ID": "B"}))
-        procesos.append(start_process("C", "replica.py", {"PORT": "5003", "REPLICA_ID": "C"}))
+        procesos.append(start_process("A", "src/replica.py", {"PORT": "5001", "REPLICA_ID": "A"}))
+        procesos.append(start_process("B", "src/replica.py", {"PORT": "5002", "REPLICA_ID": "B"}))
+        procesos.append(start_process("C", "src/replica.py", {"PORT": "5003", "REPLICA_ID": "C"}))
 
         time.sleep(1)  # Dar tiempo a que las réplicas arranquen
 
         # 2. Levantar Dispatcher
         procesos.append(start_process(
             "Dispatcher",
-            "dispatcher.py",
+            "src/dispatcher.py",
             {"PORT": "5000", "REPLICAS": "http://localhost:5001,http://localhost:5002,http://localhost:5003"}
         ))
 
